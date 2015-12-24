@@ -1,1 +1,1 @@
-*** placeholder for assembly instructions
+placeholder for assembly instructions

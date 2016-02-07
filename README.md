@@ -22,4 +22,14 @@ Open up http://DC2.local:8765 with your browser -- this should return the config
 
 ## 3. Configure the DC2
 
+3.1 Check that you can SSH into your DC2
+
+3.2 Change your password
+
+3.3 Change your machine name
+
+
+
+3.2 '''$ docker-machine create --driver generic --generic-ip-address=203.0.113.81 vm'''
+
 

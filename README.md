@@ -24,6 +24,8 @@ Open up http://DC2.local:8765 with your browser -- this should return the config
 
 3.1 Check that you can SSH into your DC2
 
+ $ ssh dc2@dc2.local 
+
 3.2 Change your password
 
 3.3 Change your machine name

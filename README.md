@@ -44,7 +44,7 @@ with the editor of your choice. Then run `sudo service hostname restart`
 
 3.5 If you want to change the locale, follow directions at https://help.ubuntu.com/community/Locale
 
-3.6 
+3.6 ssh dc2@dc2.local "cat >> .ssh/authorized_keys" < ~/.ssh/id_rsa.pub
 
 
 

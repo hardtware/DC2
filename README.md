@@ -24,14 +24,40 @@ Open up http://DC2.local:8765 with your browser -- this should return the config
 
 3.1 Check that you can SSH into your DC2
 
-`$ ssh dc2@dc2.local` 
+`$ ssh dc2@dc2.local`
+
+enter `ubuntu` when prompted for the password
 
 3.2 Change your password
 
-3.3 Change your machine name
+`$ passwd`
+
+Enter `ubuntu` for the old password, and then enter your new password
+
+3.3 If you have more than one DC2, change your machine names by replacing `dc2` to a new name unique on your network in the 
+
+`/etc/hostname` and `/etc/hosts` files
+
+with the editor of your choice. Then run `sudo service hostname restart`
+
+3.4 If you are not in the `America/Los Angeles` timezone you can change it with `sudo dpkg-reconfigure tzdata`
+
+3.5 If you want to change the locale, follow directions at https://help.ubuntu.com/community/Locale
+
+3.6 
 
 
 
-3.2 '''$ docker-machine create --driver generic --generic-ip-address=203.0.113.81 vm'''
+4. Setup Docker
+
+4.1 Make sure you have Docker intalled on your desktop. 
+
+4.2 Setup the DC2 as a generic machine
+
+`$ docker-machine create --driver generic --generic-ssh-user=dc2 --generic-ip-address=xxxxxx vm`
+
+
+
+
 
 

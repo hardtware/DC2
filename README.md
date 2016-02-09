@@ -46,7 +46,7 @@ with the editor of your choice. Then run `sudo service hostname restart`
 
 3.6 If you don't have an ssh key, create one *link to directions*
 
-3.7 Copy your ssh key to your DC2. If your ssh public key is at `~/.ssh/id_rsa.pub`
+3.7 Copy your ssh key to your DC2. If your SSH public key is at `~/.ssh/id_rsa.pub`
 
 `ssh dc2@dc2.local "cat >> .ssh/authorized_keys" < ~/.ssh/id_rsa.pub`
 

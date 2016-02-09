@@ -34,7 +34,7 @@ enter `ubuntu` when prompted for the password
 
 Enter `ubuntu` for the old password, and then enter your new password
 
-3.3 If you have more than one DC2, change your machine names by replacing `dc2` to a new name unique on your network in the 
+3.3 If you have more than one DC2, change your hostname by replacing `dc2` to a new name unique on your network in the 
 
 `/etc/hostname` and `/etc/hosts` files
 
@@ -44,8 +44,13 @@ with the editor of your choice. Then run `sudo service hostname restart`
 
 3.5 If you want to change the locale, follow directions at https://help.ubuntu.com/community/Locale
 
-3.6 ssh dc2@dc2.local "cat >> .ssh/authorized_keys" < ~/.ssh/id_rsa.pub
+3.6 If you don't have an ssh key, create one *link to directions*
 
+3.7 Copy your ssh key to your DC2. If your ssh public key is at `~/.ssh/id_rsa.pub`
+
+`ssh dc2@dc2.local "cat >> .ssh/authorized_keys" < ~/.ssh/id_rsa.pub`
+
+If you changed your hostname, then replace `@dc2` with `@hostname` 
 
 
 4. Setup Docker
@@ -54,7 +59,15 @@ with the editor of your choice. Then run `sudo service hostname restart`
 
 4.2 Setup the DC2 as a generic machine
 
-`$ docker-machine create --driver generic --generic-ssh-user=dc2 --generic-ip-address=xxxxxx vm`
+`$ docker-machine create --driver generic --generic-ssh-user=dc2 --generic-ip-address=xxxxxx dc2`
+
+This will create a new machine named `dc2` to run docker containers against. If you have more than one DC2, then use a different name instead of `dc2` such as your hostname.
+
+4.3 Run the hello-world container
+
+`$ docker xxxx`
+
+
 
 
 

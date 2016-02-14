@@ -40,30 +40,39 @@ Enter `ubuntu` for the old password, and then enter your new password
 
 with the editor of your choice. Then run `sudo service hostname restart`
 
+NOTE: Everwhere you see `dc2` below, change that to the new hostname you have given your DC2.
+
 3.4 If you are not in the `America/Los Angeles` timezone you can change it with `sudo dpkg-reconfigure tzdata`
 
 3.5 If you want to change the locale, follow directions at https://help.ubuntu.com/community/Locale
 
 3.6 If you don't have an ssh key, create one *link to directions*
 
-3.7 Copy your ssh key to your DC2. If your SSH public key is at `~/.ssh/id_rsa.pub`
+3.7 Copy your SSH public key to your DC2. If your SSH public key is at `~/.ssh/id_rsa.pub`
 
 `ssh dc2@dc2.local "cat >> .ssh/authorized_keys" < ~/.ssh/id_rsa.pub`
 
-If you changed your hostname, then replace `@dc2` with `@hostname` 
-
-
 4. Setup Docker
 
-4.1 Make sure you have Docker intalled on your desktop. 
+4.1 Make sure you have the [Docker Toolbox](https://www.docker.com/products/docker-toolbox) intalled on your computer.
 
-4.2 Setup the DC2 as a generic machine
+4.2 Find the IP address of your DC2
 
-`$ docker-machine create --driver generic --generic-ssh-user=dc2 --generic-ip-address=xxxxxx dc2`
+`ping dc2.local`
 
-This will create a new machine named `dc2` to run docker containers against. If you have more than one DC2, then use a different name instead of `dc2` such as your hostname.
+Substitute `a.b.c.d` in the following commands with your DC2's IP address
 
-4.3 Run the hello-world container
+4.3 Check that you can use SSH against your IP address
+
+`ssh dc2@a.b.c.d`
+
+4.4 Setup the DC2 as a generic machine
+
+`$ docker-machine create --driver generic --generic-ssh-user=dc2 --generic-ip-address=a.b.c.d dc2`
+
+This will create add your DC2 as a machine to run containers in.
+
+4.5 Run the hello-world container
 
 `$ docker xxxx`
 

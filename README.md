@@ -6,7 +6,33 @@
 
 ## 1. DC2 Assembly
 
-X. Connect your DC2 to power and your LAN. You should see lights show up. If you have more than one DC2, setup one at a time.
+1.1 Connect the MinnowBoard Turbot to the faceplate. This will let you work with your MinnowBoard Turbot and minimize risk of shorting a component.
+
+1.1.1 Get a #1 or #2 philips head screwdriver and screw the 2 XXX screws each in a few turns. You want the screws to go in from the left side if you are looking at the front of the faceplate. We are doing this to loosen the threads as the faceplate threads are 3D printed.
+
+1.1.2 Take out the screws, set the MinnowBoard Turbot on the faceplate, and screw the screws back in. Tighten enough that the MinnowBoard Turbot does not wobble around on the faceplate. If you have a SilverJaw Lure, you can first mount it to the MinnowBoard Turbot placing the spacers between the two boards, then screw the screws into the faceplate, and then screw the screws into the standoff at the other end of the boards.
+
+1.2 Conenct your DC2 to the world and configure it before installing any addons or installing in container. Let's make sure it works when you can easily see all the lights. If you have more than one DC2, let's do one at a time.
+
+1.2.1 Plug the Ventura Ultra USB drive into the MinnowBoard Turbot's USB 3.0 connector. This is the one that is blue and closest to the board.
+
+1.2.2 If you have one, plug in an HDMI cable so you can see the MinnowBoard Turbot boot up.
+
+1.2.3 Plug in an ethernet cable connected to the same network as the computer you are going to use to setup your DC2
+
+1.2.4 Plug in your power supply to the wall, and plug in the 5V power. Both blue lights on the MinnowBoard Turbot should light up. The green light on the ethernet adapter should flash with activity. The green light on the Ventura Ultra USB drive should go on and start to flash.
+
+1.3 Do steps 2 - 4 below, then come back to finish assembly. Disconnect power, ethernet and HDMI before continuing. 
+
+1.4 If you have an OLED you need to connect it before installing the MinnowBoard Turbot into the container.
+
+1.4.1 Take the supplied allen wrench and mount the OLED with the 4 XXX screws.
+
+1.4.2 Connect the cable from the USB 2.0 connector to the OLED. Make sure you coil the cable as indicated and connect per the diagram.
+
+1.5 Slide the assembled MinnoBoard Turbot into the container. It should click when fully installed.
+
+1.6 Reconnect ethernet and power and enjoy your DC2
 
 ## 2. Find the DC2 on your network 
 
@@ -68,18 +94,17 @@ Substitute `a.b.c.d` in the following commands with your DC2's IP address
 
 4.4 Setup the DC2 as a generic machine
 
-`$ docker-machine create --driver generic --generic-ssh-user=dc2 --generic-ip-address=a.b.c.d dc2`
+`docker-machine create --driver generic --generic-ssh-user=dc2 --generic-ip-address=a.b.c.d dc2`
 
-This will create add your DC2 as a machine to run containers in.
+This command takes a while as it will be updating the DC2. It will create add your DC2 as a machine to run containers in.
+
+4.5 Setup the DC2 as your docker machine
+
+`docker-machine env dc2` will show you how to setup the envirnment to run commands against your DC2
 
 4.5 Run the hello-world container
 
-`$ docker xxxx`
+`docker run hello-world`
 
-
-
-
-
-
-
+4.6 Success! Disconnect power, ethernet and HTMI (if connected) and finish assembly in 1.4
 

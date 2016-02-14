@@ -3,6 +3,7 @@
 1. Assemble the DC2
 2. Find the DC2 on your network
 3. Configure the DC2
+4. Add the DC2 as a docker machine
 
 ## 1. DC2 Assembly
 
@@ -78,7 +79,7 @@ NOTE: Everwhere you see `dc2` below, change that to the new hostname you have gi
 
 `ssh dc2@dc2.local "cat >> .ssh/authorized_keys" < ~/.ssh/id_rsa.pub`
 
-4. Setup Docker
+## 4. Setup DC2 as a Docker Machine
 
 4.1 Make sure you have the [Docker Toolbox](https://www.docker.com/products/docker-toolbox) intalled on your computer.
 

@@ -80,6 +80,7 @@ Enter `hardtware` for the old password, and then enter your new password
 `/etc/hostname` and `/etc/hosts` files
 
 with the editor of your choice. Then run `sudo service hostname restart`
+*need to also restart the avahi service -- NOT SURE HOW TO DO THIS*
 
 NOTE: Everwhere you see `dc2` below, change that to the new hostname you have given your DC2.
 

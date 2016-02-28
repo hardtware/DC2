@@ -46,7 +46,7 @@ When you connect your DC2 to your network, it will be using DHCP to get an IP ad
 2.3. Check you can connect to your DC2
 
 Open up http://DC2.local:8765 with your browser -- this should return the configuration information from your DC2. 
-It can take XX minutes for the DC2 to boot, and XX for the dc2-node script to run and Bonjour to have completed its broadcast. You should see something like this:
+It can take 40 seconds for the DC2 to boot, and 30 seconds for the dc2-node script to run and Bonjour to have completed its broadcast so that loading the web page to work. You should see something like this:
 
 ```
 {
@@ -146,4 +146,9 @@ You should see "Hello from Docker". You now have a functining Desktop Computer C
 **put assembly down here!**
 
 Success! Disconnect power, ethernet and HDMI (if connected) and finish assembly in 1.4
+
+
+`WRITE SAME failed. Manually zeroing.`
+
+
 

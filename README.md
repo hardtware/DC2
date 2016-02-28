@@ -116,9 +116,11 @@ Substitute `a.b.c.d` in the following commands with your DC2's IP address
 
 `ssh dc2@a.b.c.d`
 
+If you had previously used SSH against that IP address, your will likely get an error and you will need to update your known_hosts file.
+
 4.4 Setup the DC2 as a generic machine
 
-`docker-machine create --driver generic --generic-ssh-user=dc2 --generic-ip-address=a.b.c.d dc2`
+`docker-machine create --driver generic --generic-ssh-user=jack --generic-ip-address=a.b.c.d dc2`
 
 This command takes a while as it will be updating the DC2. It will create add your DC2 as a machine to run containers in.
 

@@ -77,8 +77,10 @@ Enter `hardtware` for the old password, and then enter your new password
 
 3.3 If you don't have an ssh key, create one *link to directions*
 
-3.4 Copy your SSH public key to your DC2. 
+3.4 Copy your SSH public key to your DC2.
+
 First `exit` your SSH session with your DC2. 
+
 If your SSH public key is at `~/.ssh/id_rsa.pub` then from your machine:
 
 `ssh jack@dc2.local "cat >> .ssh/authorized_keys" < ~/.ssh/id_rsa.pub`

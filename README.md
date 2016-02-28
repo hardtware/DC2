@@ -136,5 +136,14 @@ This command takes a while as it will be updating the DC2. It will create add yo
 
 `docker run hello-world`
 
-4.6 Success! Disconnect power, ethernet and HDMI (if connected) and finish assembly in 1.4
+You should see "Hello from Docker". You now have a functining Desktop Computer Container!
+
+4.6 Shutting down your DC2. Make sure you properly shutdown your DC2 so that the file system does not get corrupted. If it does, you will need to connect a monitor and keyboard to fix the errors on boot.
+
+`ssh jack@dc2.local`
+`sudo shutdown -h now`
+
+**put assembly down here!**
+
+Success! Disconnect power, ethernet and HDMI (if connected) and finish assembly in 1.4
 

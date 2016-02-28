@@ -122,7 +122,11 @@ If you had previously used SSH against that IP address, your will likely get an 
 
 `docker-machine create --driver generic --generic-ssh-user=jack --generic-ip-address=a.b.c.d dc2`
 
-This command takes a while as it will be updating the DC2. It will create add your DC2 as a machine to run containers in.
+This command takes a while as it will be updating the DC2. It will create add your DC2 as a machine to run containers in. Sometimes docker-machine emits an error about certs
+
+4.4 Check the status of your DC2 docker machine
+
+`docker-machine status dc2`
 
 4.5 Setup the DC2 as your docker machine
 
@@ -132,5 +136,5 @@ This command takes a while as it will be updating the DC2. It will create add yo
 
 `docker run hello-world`
 
-4.6 Success! Disconnect power, ethernet and HTMI (if connected) and finish assembly in 1.4
+4.6 Success! Disconnect power, ethernet and HDMI (if connected) and finish assembly in 1.4
 

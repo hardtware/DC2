@@ -73,7 +73,7 @@ enter `hardtware` when prompted for the password
 
 `$ passwd`
 
-Enter `hwardtware` for the old password, and then enter your new password
+Enter `hardtware` for the old password, and then enter your new password
 
 3.3 If you have more than one DC2, change your hostname by replacing `dc2` to a new name unique on your network in the 
 

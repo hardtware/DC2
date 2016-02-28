@@ -85,6 +85,10 @@ If your SSH public key is at `~/.ssh/id_rsa.pub` then from your machine:
 
 `ssh jack@dc2.local "cat >> .ssh/authorized_keys" < ~/.ssh/id_rsa.pub`
 
+enter your new password when prompted
+
+You should now be able to `ssh jack@dc2.local` and not be prompted for a password.
+
 3.5 If you are not in the `America/Los Angeles` timezone you can change it with `sudo dpkg-reconfigure tzdata`
 
 3.6 If you want to change the locale, follow directions at https://help.ubuntu.com/community/Locale

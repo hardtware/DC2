@@ -75,7 +75,19 @@ enter `hardtware` when prompted for the password
 
 Enter `hardtware` for the old password, and then enter your new password
 
-3.3 If you have more than one DC2, change your hostname by replacing `dc2` to a new name unique on your network in the 
+3.3 If you don't have an ssh key, create one *link to directions*
+
+3.4 Copy your SSH public key to your DC2. 
+First `exit` your SSH session with your DC2. 
+If your SSH public key is at `~/.ssh/id_rsa.pub` then from your machine:
+
+`ssh jack@dc2.local "cat >> .ssh/authorized_keys" < ~/.ssh/id_rsa.pub`
+
+3.5 If you are not in the `America/Los Angeles` timezone you can change it with `sudo dpkg-reconfigure tzdata`
+
+3.6 If you want to change the locale, follow directions at https://help.ubuntu.com/community/Locale
+
+3.7 If you have more than one DC2, change your hostname by replacing `dc2` to a new hostname unique on your network (eg. dc2a, dc2b, dc2c) in the 
 
 `/etc/hostname` and `/etc/hosts` files
 
@@ -83,16 +95,6 @@ with the editor of your choice. Then run `sudo service hostname restart`
 *need to also restart the avahi service -- NOT SURE HOW TO DO THIS*
 
 NOTE: Everwhere you see `dc2` below, change that to the new hostname you have given your DC2.
-
-3.4 If you are not in the `America/Los Angeles` timezone you can change it with `sudo dpkg-reconfigure tzdata`
-
-3.5 If you want to change the locale, follow directions at https://help.ubuntu.com/community/Locale
-
-3.6 If you don't have an ssh key, create one *link to directions*
-
-3.7 Copy your SSH public key to your DC2. If your SSH public key is at `~/.ssh/id_rsa.pub`
-
-`ssh dc2@dc2.local "cat >> .ssh/authorized_keys" < ~/.ssh/id_rsa.pub`
 
 ## 4. Setup DC2 as a Docker Machine
 

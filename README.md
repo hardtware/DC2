@@ -46,20 +46,34 @@ When you connect your DC2 to your network, it will be using DHCP to get an IP ad
 2.3. Check you can connect to your DC2
 
 Open up http://DC2.local:8765 with your browser -- this should return the configuration information from your DC2. 
+It can take XX minutes for the DC2 to boot, and XX for the dc2-node script to run and Bonjour to have completed its broadcast. You should see something like this:
+
+```
+{
+"latestVersion": "1.0.4",
+"version": "1.0.4",
+"hostname": "dc2",
+"ip": "a.b.c.d",
+"MAC": "ff:ff:ff:ff:ff:ff",
+"callHomeResponse": 200
+}
+```
+
+where `a.b.c.d` is the IP address of your DC2 and `ff:ff:ff:ff:ff:ff` is the MAC address of your DC2 ethernet port.
 
 ## 3. Configure the DC2
 
-3.1 Check that you can SSH into your DC2
+3.1 Check that you can SSH into your DC2. `jack` is the preconfifured username
 
-`$ ssh dc2@dc2.local`
+`$ ssh jack@dc2.local`
 
-enter `ubuntu` when prompted for the password
+enter `hardtware` when prompted for the password
 
 3.2 Change your password
 
 `$ passwd`
 
-Enter `ubuntu` for the old password, and then enter your new password
+Enter `hwardtware` for the old password, and then enter your new password
 
 3.3 If you have more than one DC2, change your hostname by replacing `dc2` to a new name unique on your network in the 
 

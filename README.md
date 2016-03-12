@@ -35,6 +35,14 @@
 
 1.6 Reconnect ethernet and power and enjoy your DC2
 
+
+OLED installation
+
+Screw an OLED screw all the way to the bottom of each mount point in the faceplate. There will be extra material in the hole from the 3D printing. This clears out the hole, and is much easier to do when the OLED is not mounted.
+
+
+
+
 ## 2. Find the DC2 on your network 
 
 2.1. Make sure you have Bonjour / mDNS

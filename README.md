@@ -143,40 +143,45 @@ Success! Disconnect power, ethernet and HDMI (if connected) and finish assembly 
 
 ## 5. DC2 Assembly
 
-5.1 Connect the MinnowBoard Turbot to the faceplate. This will let you work with your MinnowBoard Turbot and minimize risk of shorting a component.
+5.1 Connect the MinnowBoard Turbot to the faceplate.
 
-5.1.1 Get a #1 or #2 philips head screwdriver and screw the 2 XXX screws each in a few turns. You want the screws to go in from the left side if you are looking at the front of the faceplate. We are doing this to loosen the threads as the faceplate threads are 3D printed.
+5.1.1 Get a #1 (or #2 if need be) philips head screwdriver and screw the 2 M3 hilips screws each in a few turns. You want the screws to go in from the left side if you are looking at the front of the faceplate. We are doing this to loosen the threads as the faceplate threads are 3D printed.
 
 ![mounting screws](./images/mounting_screws.jpg)
 
 5.1.2 Take out the screws, set the MinnowBoard Turbot on the faceplate, and screw the screws back in. Tighten enough that the MinnowBoard Turbot does not wobble around on the faceplate. If you have a SilverJaw Lure, you can first mount it to the MinnowBoard Turbot placing the spacers between the two boards, then screw the screws into the faceplate, and then screw the screws into the standoff at the other end of the boards.
 
-5.2 Conenct your DC2 to the world and configure it before installing any addons or installing in container. Let's make sure it works when you can easily see all the lights. If you have more than one DC2, let's do one at a time.
+![mounting screws](./images/base_assembly.jpg)
 
-5.2.1 Plug the Ventura Ultra USB drive into the MinnowBoard Turbot's USB 3.0 connector. This is the one that is blue and closest to the board.
+With SilverJaw 
 
-5.2.2 If you have one, plug in an HDMI cable so you can see the MinnowBoard Turbot boot up.
+![mounting screws](./images/Silverjaw_Assembly.jpg)
 
-5.2.3 Plug in an ethernet cable connected to the same network as the computer you are going to use to setup your DC2
+5.2 Connnect the USB drive to the MinnowBoard if it is not connected.
 
-5.2.4 Plug in your power supply to the wall, and plug in the 5V power. Both blue lights on the MinnowBoard Turbot should light up. The green light on the ethernet adapter should flash with activity. The green light on the Ventura Ultra USB drive should go on and start to flash.
+5.3 If you have an OLED you need to connect it before installing the MinnowBoard Turbot into the container.
 
-5.3 Do steps 2 - 4 below, then come back to finish assembly. Disconnect power, ethernet and HDMI before continuing. 
+5.3.1 Just as we did with the screws for mounting the MinnowBoard, we need to clean out the threads for the OLED mount. Screw the M1.6 screws into the OLED mounting locations with the supplied allen wrent, and then take them back out.
 
-5.4 If you have an OLED you need to connect it before installing the MinnowBoard Turbot into the container.
+![mounting screws](./images/OLED_screws.jpg)
 
-5.4.1 Take the supplied allen wrench and mount the OLED with the 4 XXX screws.
+5.3.2 Insert the memory card into the OLED. This image also shows how the cable will be connected.
 
-5.4.2 Connect the cable from the USB 2.0 connector to the OLED. Make sure you coil the cable as indicated and connect per the diagram.
+![mounting screws](./images/OLED_assembly.jpg)
 
-5.5 Slide the assembled MinnoBoard Turbot into the container. It should click when fully installed.
+5.3.3 Mount the OLED with the 4 M1.6 hex head screws.
 
-5.6 Reconnect ethernet and power and enjoy your DC2
+![mounting screws](./images/OLED_mounting.jpg)
 
+5.3.4 Connect the cable from the USB 2.0 connector to the OLED. Make sure you coil the cable as indicated and connect per the diagram.
 
-OLED installation
+![mounting screws](./images/full_assembly.jpg)
 
-Screw an OLED screw all the way to the bottom of each mount point in the faceplate. There will be extra material in the hole from the 3D printing. This clears out the hole, and is much easier to do when the OLED is not mounted.
+5.3.5 NOTE: we are still working on software to drive the OLED.
+
+5.4 Slide the assembled MinnoBoard and faceplate into the container. It should click a little when fully installed.
+
+5.6 Reconnect ethernet and power and enjoy your DC2!
 
 
 ## 6. FAQ

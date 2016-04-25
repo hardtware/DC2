@@ -192,7 +192,7 @@ Full Assembly
 
 6.1 Q: Something is not working?
 
-A: Check the FAQ below. If not answered, file an issue at [https://github.com/hardtware/DC2/issues]
+A: Check the FAQ below. If not answered, file an issue at https://github.com/hardtware/DC2/issues
 
 6.2 Q: What is the CR1225 battery for?
 

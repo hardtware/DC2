@@ -11,6 +11,8 @@
 
 1.1.1 Get a #1 or #2 philips head screwdriver and screw the 2 XXX screws each in a few turns. You want the screws to go in from the left side if you are looking at the front of the faceplate. We are doing this to loosen the threads as the faceplate threads are 3D printed.
 
+!(images/mounting_screws.jpg)
+
 1.1.2 Take out the screws, set the MinnowBoard Turbot on the faceplate, and screw the screws back in. Tighten enough that the MinnowBoard Turbot does not wobble around on the faceplate. If you have a SilverJaw Lure, you can first mount it to the MinnowBoard Turbot placing the spacers between the two boards, then screw the screws into the faceplate, and then screw the screws into the standoff at the other end of the boards.
 
 1.2 Conenct your DC2 to the world and configure it before installing any addons or installing in container. Let's make sure it works when you can easily see all the lights. If you have more than one DC2, let's do one at a time.

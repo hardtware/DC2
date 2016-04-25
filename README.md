@@ -173,7 +173,11 @@ With SilverJaw
 
 ![mounting screws](./images/OLED_mounting.jpg)
 
-5.3.4 Connect the cable from the USB 2.0 connector to the OLED. Make sure you coil the cable as indicated and connect per the diagram.
+5.3.4 Connect the cable from the USB 2.0 connector to the OLED. Make sure you connect per the image and then coil the cable as indicated. You can use the twist tie from the power supply to hold the OLED cable.
+
+![mounting screws](./images/OLED_connection.jpg)
+
+Full Assembly
 
 ![mounting screws](./images/full_assembly.jpg)
 

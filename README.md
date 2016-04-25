@@ -190,7 +190,11 @@ Full Assembly
 
 ## 6. FAQ
 
-6.1 Q: What is the CR1225 battery for?
+6.1 Q: Something is not working?
+
+A: Check the FAQ below. If not answered, file an issue at [https://github.com/hardtware/DC2/issues]
+
+6.2 Q: What is the CR1225 battery for?
 
 A: It is a spare battery. Your MinnowBoard Turbot should have a CR1225 battery in it already.
 

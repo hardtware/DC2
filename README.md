@@ -137,21 +137,18 @@ You should see "Hello from Docker". You now have a functining Desktop Computer C
 
 **put assembly down here!**
 
-Success! Disconnect power, ethernet and HDMI (if connected) and finish assembly in 1.4
-
-
-`WRITE SAME failed. Manually zeroing.`
+Success! Disconnect power, ethernet and HDMI (if connected) and finish assembly.
 
 
 ## 5. DC2 Assembly
 
 5.1 Connect the MinnowBoard Turbot to the faceplate.
 
-5.1.1 Get a #1 (or #2 if need be) philips head screwdriver and screw the 2 M3 hilips screws each in a few turns. You want the screws to go in from the left side if you are looking at the front of the faceplate. We are doing this to loosen the threads as the faceplate threads are 3D printed.
+5.1.1 Get a #1 (or #2 if need be) philips head screwdriver and screw the 2 M3 philips screws each in a few turns. You want the screws to go in from the left side if you are looking at the front of the faceplate. We are doing this to loosen the threads as the faceplate threads are 3D printed.
 
 ![mounting screws](./images/mounting_screws.jpg)
 
-5.1.2 Take out the screws, set the MinnowBoard Turbot on the faceplate, and screw the screws back in. Tighten enough that the MinnowBoard Turbot does not wobble around on the faceplate. If you have a SilverJaw Lure, you can first mount it to the MinnowBoard Turbot placing the spacers between the two boards, then screw the screws into the faceplate, and then screw the screws into the standoff at the other end of the boards.
+5.1.2 Take out the screws, set the MinnowBoard Turbot on the faceplate, and screw the screws back in. Tighten enough that the MinnowBoard Turbot does not wobble around on the faceplate. If you have ordered a SilverJaw Lure, you can first mount it to the MinnowBoard Turbot placing the spacers between the two boards, then screw the screws into the faceplate, and then screw the screws into the standoff at the other end of the boards.
 
 ![mounting screws](./images/base_assembly.jpg)
 
@@ -163,7 +160,7 @@ With SilverJaw
 
 5.3 If you have an OLED you need to connect it before installing the MinnowBoard Turbot into the container.
 
-5.3.1 Just as we did with the screws for mounting the MinnowBoard, we need to clean out the threads for the OLED mount. Screw the M1.6 screws into the OLED mounting locations with the supplied allen wrent, and then take them back out.
+5.3.1 Just as we did with the screws for mounting the MinnowBoard, we need to clean out the threads for the OLED mount. Screw the M1.6 screws into the OLED mounting locations with the supplied allen wrench, and then take them back out.
 
 ![mounting screws](./images/OLED_screws.jpg)
 
@@ -199,5 +196,16 @@ A: Check the FAQ below. If not answered, file an issue at https://github.com/har
 6.2 Q: What is the CR1225 battery for?
 
 A: It is a spare battery. Your MinnowBoard Turbot should have a CR1225 battery in it already.
+
+6.3 Q: I see `WRITE SAME failed. Manually zeroing.` on boot. What is happening?
+
+A: Nothing bad. 
+
+6.4 Q: The machine did not boot. What happened?
+
+A: Sometimes something gets out of sync somewhere with the onboard memory and the drive and Ubuntu thinks something is corrupted and you have to tell it to continue. If you have a display attached you can see it. You can just hit `i` to ignore and everything will be fine. You might need to hit `i` a few times. If you don't have a monitor, try connecting a USB keyboard and hit `i` a few times. If you see the drive light flash, you should be booting. 
+
+
+
 
 

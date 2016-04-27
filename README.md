@@ -87,8 +87,10 @@ You should now be able to `ssh jack@dc2.local` and not be prompted for a passwor
 
 `/etc/hostname` and `/etc/hosts` files
 
-with the editor of your choice. Then run `sudo service hostname restart`
-*need to also restart the avahi service -- NOT SURE HOW TO DO THIS*
+with the editor of your choice. Then restart `hostname` and `avahi` with
+
+`sudo service hostname restart`
+`sudo /etc/init.d/avahi-daemon restart`
 
 NOTE: Everwhere you see `dc2` below, change that to the new hostname you have given your DC2.
 

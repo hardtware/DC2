@@ -6,6 +6,12 @@
 4. Add the DC2 as a docker machine
 5. Assemble the DC2
 
+## 0. Unpacking your DC2
+
+- The first time you open the container doors, be really careful. The container is a model and was not designed to be an enclosure. If a hinge breaks, you can set it aside. If you have success gluing your hing back on, please share.
+
+- We booted all of the MinnowBoard Turbots to make sure they would cleanly boot. See the FAQ below if your MinnowBoard does not boot up. 
+
 ## 1. Power up your DC2
 
 1.0 Let's make sure your MinnowBoard boots up and get it all setup while we can easily see the lights etc. before putting it in the container. If you have more than one DC2, let's set them up separately.

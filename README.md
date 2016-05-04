@@ -211,6 +211,10 @@ A: Nothing bad.
 
 A: Sometimes something gets out of sync somewhere with the onboard memory and the drive and Ubuntu thinks something is corrupted and you have to tell it to continue. If you have a display attached you can see it. You can just hit `i` to ignore and everything will be fine. You might need to hit `i` a few times. If you don't have a monitor, try connecting a USB keyboard and hit `i` a few times. If you see the drive light flash, you should be booting. 
 
+6.5 Q: How do I remove the faceplate once I have assmebled it?
+
+A: To take out the faceplate and the board, put your fingers in the large hex holes, push the faceplate down towards the bottom of the container as the top of the faceplate hooks to the top inside of the container, then wiggle and pull to get it out. 
+
 
 
 

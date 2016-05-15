@@ -15,4 +15,4 @@ The end result should look like this;
 
 ## The end result, now the containers won't fall off the stack
 ![End result 1](./images/dc2_stacker_3.jpg)
-![End result 2](./images/dc2_stacker_3.jpg)
+![End result 2](./images/dc2_stacker_4.jpg)

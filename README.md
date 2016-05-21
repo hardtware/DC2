@@ -5,12 +5,14 @@
 3. Configure the DC2
 4. Add the DC2 as a docker machine
 5. Assemble the DC2
+6. DC2 Stacker
+7. FAQ
 
 ## 0. Unpacking your DC2
 
 - The first time you open the container doors, be really careful. The container is a model and was not designed to be an enclosure. If a hinge breaks, you can set it aside. If you have success gluing your hing back on, please share.
 
-- We booted all of the MinnowBoard Turbots to make sure they would cleanly boot. See the FAQ below if your MinnowBoard does not boot up. 
+- We booted all of the MinnowBoard Turbots to make sure they would cleanly boot. See the FAQ below if your MinnowBoard does not boot up.
 
 ## 1. Power up your DC2
 
@@ -31,7 +33,7 @@
 ![test setup](./images/test_setup.jpg)
 
 
-## 2. Find the DC2 on your network 
+## 2. Find the DC2 on your network
 
 2.1. Make sure you have Bonjour / mDNS
 
@@ -41,7 +43,7 @@ When you connect your DC2 to your network, it will be using DHCP to get an IP ad
 
 2.3. Check you can connect to your DC2
 
-Open up http://DC2.local:8765 with your browser -- this should return the configuration information from your DC2. 
+Open up http://DC2.local:8765 with your browser -- this should return the configuration information from your DC2.
 It can take 40 seconds for the DC2 to boot, and 30 seconds for the dc2-node script to run and Bonjour to have completed its broadcast so that loading the web page to work. You should see something like this:
 
 ```
@@ -75,7 +77,7 @@ Enter `hardtware` for the old password, and then enter your new password
 
 3.4 Copy your SSH public key to your DC2.
 
-First `exit` your SSH session with your DC2. 
+First `exit` your SSH session with your DC2.
 
 If your SSH public key is at `~/.ssh/id_rsa.pub` then from your machine:
 
@@ -89,7 +91,7 @@ You should now be able to `ssh jack@dc2.local` and not be prompted for a passwor
 
 3.6 If you want to change the locale, follow directions at https://help.ubuntu.com/community/Locale
 
-3.7 If you have more than one DC2, change your hostname by replacing `dc2` to a new hostname unique on your network (eg. dc2a, dc2b, dc2c) in the 
+3.7 If you have more than one DC2, change your hostname by replacing `dc2` to a new hostname unique on your network (eg. dc2a, dc2b, dc2c) in the
 
 `/etc/hostname` and `/etc/hosts` files
 
@@ -158,7 +160,7 @@ Success! Disconnect power, ethernet and HDMI (if connected) and finish assembly.
 
 ![mounting screws](./images/base_assembly.jpg)
 
-With SilverJaw 
+With SilverJaw
 
 ![mounting screws](./images/Silverjaw_Assembly.jpg)
 
@@ -192,8 +194,29 @@ Full Assembly
 
 5.6 Reconnect ethernet and power and enjoy your DC2!
 
+## 6. DC2 Stacker
 
-## 6. FAQ
+The Kickstarter backers that have bought the DC2 (a stack of 4 containers) might have a hard time to get them stacked.
+This is because there's no lock to get the containers nicely stacked. To make sure they keep "stacked" on top of each other I created a small frame called the "DC2 Stacker" :-)
+
+All you need to do is print (a 3D printer that is, not you're regular printer) the [STL file](./sources/dc2_stacker.stl) three (3x) times. One would be the base layer, and the two other layers should be glued together (with superglue) to form the mid section.
+
+The end result should look like this;
+
+### The two layers are glued together, and should be placed on top of the fist two containers
+![Two layers glued together](./images/dc2_stacker_1.jpg)
+
+### The next layer of containers should fit in nicely
+![Build the stack](./images/dc2_stacker_2.jpg)
+
+### The end result, now the containers won't fall off the stack
+![End result 1](./images/dc2_stacker_3.jpg)
+![End result 2](./images/dc2_stacker_4.jpg)
+
+### STL file
+![DC2-Stacker STL file](./sources/dc2_stacker.stl)
+
+## 7. FAQ
 
 6.1 Q: Something is not working?
 
@@ -205,17 +228,12 @@ A: It is a spare battery. Your MinnowBoard Turbot should have a CR1225 battery i
 
 6.3 Q: I see `WRITE SAME failed. Manually zeroing.` on boot. What is happening?
 
-A: Nothing bad. 
+A: Nothing bad.
 
 6.4 Q: The machine did not boot. What happened?
 
-A: Sometimes something gets out of sync somewhere with the onboard memory and the drive and Ubuntu thinks something is corrupted and you have to tell it to continue. If you have a display attached you can see it. You can just hit `i` to ignore and everything will be fine. You might need to hit `i` a few times. If you don't have a monitor, try connecting a USB keyboard and hit `i` a few times. If you see the drive light flash, you should be booting. 
+A: Sometimes something gets out of sync somewhere with the onboard memory and the drive and Ubuntu thinks something is corrupted and you have to tell it to continue. If you have a display attached you can see it. You can just hit `i` to ignore and everything will be fine. You might need to hit `i` a few times. If you don't have a monitor, try connecting a USB keyboard and hit `i` a few times. If you see the drive light flash, you should be booting.
 
 6.5 Q: How do I remove the faceplate once I have assmebled it?
 
-A: To take out the faceplate and the board, put your fingers in the large hex holes, push the faceplate down towards the bottom of the container as the top of the faceplate hooks to the top inside of the container, then wiggle and pull to get it out. 
-
-
-
-
-
+A: To take out the faceplate and the board, put your fingers in the large hex holes, push the faceplate down towards the bottom of the container as the top of the faceplate hooks to the top inside of the container, then wiggle and pull to get it out.

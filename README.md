@@ -203,17 +203,17 @@ All you need to do is print (a 3D printer that is, not you're regular printer) t
 
 The end result should look like this;
 
-### The two layers are glued together, and should be placed on top of the fist two containers
+#### Place the layer on top of the fist two containers
 ![Two layers glued together](./images/dc2_stacker_1.jpg)
 
-### The next layer of containers should fit in nicely
+#### The next layer of containers should fit in nicely
 ![Build the stack](./images/dc2_stacker_2.jpg)
 
-### The end result, now the containers won't fall off the stack
+#### The end result, now the containers won't fall off the stack
 ![End result 1](./images/dc2_stacker_3.jpg)
 ![End result 2](./images/dc2_stacker_4.jpg)
 
-### STL file
+#### STL file
 ![DC2-Stacker STL file](./sources/dc2_stacker.stl)
 
 ## 7. FAQ

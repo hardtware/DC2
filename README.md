@@ -193,30 +193,7 @@ Full Assembly
 5.4 Slide the assembled MinnoBoard and faceplate into the container. It should click a little when fully installed.
 
 5.6 Reconnect ethernet and power and enjoy your DC2!
-
-## 6. DC2 Stacker
-
-The Kickstarter backers that have bought the DC2 (a stack of 4 containers) might have a hard time to get them stacked.
-This is because there's no lock to get the containers nicely stacked. To make sure they keep "stacked" on top of each other I created a small frame called the "DC2 Stacker" :-)
-
-All you need to do is print (a 3D printer that is, not you're regular printer) the [STL file](./sources/dc2_stacker.stl) three (3x) times. One would be the base layer, and the two other layers should be glued together (with superglue) to form the mid section.
-
-The end result should look like this;
-
-#### Place the layer on top of the fist two containers
-![Two layers glued together](./images/dc2_stacker_1.jpg)
-
-#### The next layer of containers should fit in nicely
-![Build the stack](./images/dc2_stacker_2.jpg)
-
-#### The end result, now the containers won't fall off the stack
-![End result 1](./images/dc2_stacker_3.jpg)
-![End result 2](./images/dc2_stacker_4.jpg)
-
-#### STL file
-![DC2-Stacker STL file](./sources/dc2_stacker.stl)
-
-## 7. FAQ
+## 6. FAQ
 
 6.1 Q: Something is not working?
 
@@ -237,3 +214,7 @@ A: Sometimes something gets out of sync somewhere with the onboard memory and th
 6.5 Q: How do I remove the faceplate once I have assmebled it?
 
 A: To take out the faceplate and the board, put your fingers in the large hex holes, push the faceplate down towards the bottom of the container as the top of the faceplate hooks to the top inside of the container, then wiggle and pull to get it out.
+
+6.6 Q How can I stack up my containers?
+
+A: [remonlam](https://github.com/remonlam) has created an STL you can 3D print to stack up your containers [here](./stacker.md) 

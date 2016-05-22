@@ -1,7 +1,7 @@
 
 # DC2 Stacker
 
-(thanks to https://github.com/remonlam)
+... thanks to [remonlam](https://github.com/remonlam)
 
 The Kickstarter backers that have bought the DC2 Data Center (a stack of 4 containers) might have a hard time to get them stacked.
 This is because there's no lock to get the containers nicely stacked. To make sure they keep "stacked" on top of each other I created a small frame called the "DC2 Stacker" :-)

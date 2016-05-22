@@ -21,5 +21,5 @@ The end result should look like this;
 ![End result 2](./images/dc2_stacker_4.jpg)
 
 #### STL file
-![DC2-Stacker STL file](./sources/dc2_stacker.stl)
+[DC2-Stacker STL file](./sources/dc2_stacker.stl)
 

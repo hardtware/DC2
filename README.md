@@ -167,6 +167,14 @@ Once completed, run:
 
 3.10 OPTIONALLY update your packages.
 
+Run:
+
+    sudo apt-get update
+    sudo apt-get upgrade
+
+You may need to enter `y` to approve the updates.
+
+
 ## 4. Setup DC2 as a Docker Machine
 
 4.1 Make sure you have the [Docker Toolbox](https://www.docker.com/products/docker-toolbox) intalled on your computer.

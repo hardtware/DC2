@@ -62,6 +62,7 @@ where `a.b.c.d` is the IP address of your DC2 and `ff:ff:ff:ff:ff:ff` is the MAC
 3.1 Check that you can SSH into your DC2.
 
 `jack` is the preconfigured username
+
 `hardtware` is the preconfigured password
 
     ssh jack@dc2.local
@@ -99,6 +100,7 @@ You should now be able to `ssh jack@dc2.local` and not be prompted for a passwor
 3.7 If you have more than one DC2, change your hostname by replacing `dc2` to a new hostname unique on your network (eg. dc2a, dc2b, dc2c) in the `/etc/hostname` and `/etc/hosts` files.
 
 For example, if you wanted to change the hostname to `dc2a`, you would run:
+
     sudo echo dc2a /etc/hostname
     sudo sed -i 's/dc2/dc2a/1' /etc/hosts
 
@@ -114,21 +116,26 @@ NOTE: Everwhere you see `dc2` below, change that to the new hostname you have gi
 In our example we will change the username to `bob` and remove `jack` entirely.  For this example, start my being logged in as `jack`.
 
 Create the new user:
+
     sudo useradd -D bob
 
 Set a `sudo` password for the user:
+
     sudo passwd bob
 
 Create the `ssh` directory for the user:
+
 	sudo mkdir /home/bob/.ssh
 	sudo chown bob:bob /home/bob/.ssh
 	sudo chmod 700 /home/bob/.ssh
 
 If you created and copied over a ssh key for jack, let's copy it over to bob.
+
     sudo cp /home/jack/.ssh/authorized_keys /home/bob/.ssh/authorized_keys
     sudo chown bob:bob /home/bob/.ssh/authorized_keys
 
 The last item is to add `bob` to all of the appropriate groups that `jack` is a member of:
+
     sudo usermod -a -G adm bob
     sudo usermod -a -G cdrom bob
     sudo usermod -a -G sudo bob
@@ -139,6 +146,7 @@ The last item is to add `bob` to all of the appropriate groups that `jack` is a 
     sudo usermod -a -G sambashare bob
 
 In a new terminal window, try to SSH now as bob using pubkey auth:
+
     ssh -o IdentityFile=~/.ssh/id_rsa bob@dc2.local
 
 Note: You will need to change `~/.ssh/id_rsa` to your respective key path from above and `dc2.local` to whatever you changed your hostname to above as well.
@@ -146,6 +154,7 @@ Note: You will need to change `~/.ssh/id_rsa` to your respective key path from a
 If you are able to SSH in at this point you have correctly created another user and setup their SSH key correctly.
 
 As the final step, you may remove the `jack` user from the device.
+
     sudo userdel -r jack
 
 3.9 OPTIONALLY disable password authentication and only allow pubkey authentication.  This is recommended for most users but is considered optional because it is more advanced.
@@ -153,6 +162,7 @@ As the final step, you may remove the `jack` user from the device.
 Bring up `/etc/ssh/sshd_config` in your favorite editor and uncomment the line that has `PasswordAuthentication`.  Change the value to `no` if it is not set as such.  
 
 Once completed, run:
+
     sudo service ssh restart
 
 3.10 OPTIONALLY update your packages.

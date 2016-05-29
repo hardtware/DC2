@@ -43,64 +43,119 @@ When you connect your DC2 to your network, it will be using DHCP to get an IP ad
 
 2.3. Check you can connect to your DC2
 
-Open up http://DC2.local:8765 with your browser -- this should return the configuration information from your DC2.
+Open up [](http://DC2.local:8765) with your browser -- this should return the configuration information from your DC2.
 It can take 40 seconds for the DC2 to boot, and 30 seconds for the dc2-node script to run and Bonjour to have completed its broadcast so that loading the web page to work. You should see something like this:
 
-```
-{
-"latestVersion": "1.0.4",
-"version": "1.0.4",
-"hostname": "dc2",
-"ip": "a.b.c.d",
-"MAC": "ff:ff:ff:ff:ff:ff",
-"callHomeResponse": 200
-}
-```
+    {
+        "latestVersion": "1.0.4",
+        "version": "1.0.4",
+        "hostname": "dc2",
+        "ip": "a.b.c.d",
+        "MAC": "ff:ff:ff:ff:ff:ff",
+        "callHomeResponse": 200
+    }
 
 where `a.b.c.d` is the IP address of your DC2 and `ff:ff:ff:ff:ff:ff` is the MAC address of your DC2 ethernet port.
 
 ## 3. Configure the DC2
 
-3.1 Check that you can SSH into your DC2. `jack` is the preconfifured username
+3.1 Check that you can SSH into your DC2.
 
-`$ ssh jack@dc2.local`
+`jack` is the preconfigured username
+`hardtware` is the preconfigured password
 
-enter `hardtware` when prompted for the password
+    ssh jack@dc2.local
 
 3.2 Change your password
 
-`$ passwd`
+    passwd
 
-Enter `hardtware` for the old password, and then enter your new password
+Enter `hardtware` for the old password, and then enter your new password.
 
-3.3 If you don't have an ssh key, create one *link to directions*
+3.3 If you don't have an ssh key, on *another* machine run the following:
+
+    ssh-keygen -b 4096 -f ~/.ssh/id_rsa.dc2
+
+You will be prompted to create a passphrase, create one and enter it in twice as prompted.
 
 3.4 Copy your SSH public key to your DC2.
 
 First `exit` your SSH session with your DC2.
 
-If your SSH public key is at `~/.ssh/id_rsa.pub` then from your machine:
+If your SSH public key is at `~/.ssh/id_rsa.pub` (if created above, use `~/.ssh/id_rsa.dc2`) then from your machine:
 
-`ssh jack@dc2.local "cat >> .ssh/authorized_keys" < ~/.ssh/id_rsa.pub`
+    ssh jack@dc2.local "cat >> .ssh/authorized_keys" < ~/.ssh/id_rsa.pub
 
-enter your new password when prompted
+Enter your new password when prompted.
 
 You should now be able to `ssh jack@dc2.local` and not be prompted for a password.
 
-3.5 If you are not in the `America/Los Angeles` timezone you can change it with `sudo dpkg-reconfigure tzdata`
+3.5 If you are not in the `America/Los Angeles` timezone you can change it with:
 
-3.6 If you want to change the locale, follow directions at https://help.ubuntu.com/community/Locale
+    sudo dpkg-reconfigure tzdata
 
-3.7 If you have more than one DC2, change your hostname by replacing `dc2` to a new hostname unique on your network (eg. dc2a, dc2b, dc2c) in the
+3.6 If you want to change the locale, follow directions at [](https://help.ubuntu.com/community/Locale).
 
-`/etc/hostname` and `/etc/hosts` files
+3.7 If you have more than one DC2, change your hostname by replacing `dc2` to a new hostname unique on your network (eg. dc2a, dc2b, dc2c) in the `/etc/hostname` and `/etc/hosts` files.
 
-with the editor of your choice. Then restart `hostname` and `avahi` with
+For example, if you wanted to change the hostname to `dc2a`, you would run:
+    sudo echo dc2a /etc/hostname
+    sudo sed -i 's/dc2/dc2a/1' /etc/hosts
 
-`sudo service hostname restart`
-`sudo /etc/init.d/avahi-daemon restart`
+Then restart `hostname` and `avahi` services with:
+
+    sudo service hostname restart
+    sudo /etc/init.d/avahi-daemon restart
 
 NOTE: Everwhere you see `dc2` below, change that to the new hostname you have given your DC2.
+
+3.8 OPTIONALLY change the username from `jack` to something else.  This requires a few more commands and should be considered a bit more advnaced of a topic.
+
+In our example we will change the username to `bob` and remove `jack` entirely.  For this example, start my being logged in as `jack`.
+
+Create the new user:
+    sudo useradd -D bob
+
+Set a `sudo` password for the user:
+    sudo passwd bob
+
+Create the `ssh` directory for the user:
+	sudo mkdir /home/bob/.ssh
+	sudo chown bob:bob /home/bob/.ssh
+	sudo chmod 700 /home/bob/.ssh
+
+If you created and copied over a ssh key for jack, let's copy it over to bob.
+    sudo cp /home/jack/.ssh/authorized_keys /home/bob/.ssh/authorized_keys
+    sudo chown bob:bob /home/bob/.ssh/authorized_keys
+
+The last item is to add `bob` to all of the appropriate groups that `jack` is a member of:
+    sudo usermod -a -G adm bob
+    sudo usermod -a -G cdrom bob
+    sudo usermod -a -G sudo bob
+    sudo usermod -a -G dip bob
+    sudo usermod -a -G plugdev bob
+    sudo usermod -a -G lpadmin bob
+    sudo usermod -a -G dc2 bob
+    sudo usermod -a -G sambashare bob
+
+In a new terminal window, try to SSH now as bob using pubkey auth:
+    ssh -o IdentityFile=~/.ssh/id_rsa bob@dc2.local
+
+Note: You will need to change `~/.ssh/id_rsa` to your respective key path from above and `dc2.local` to whatever you changed your hostname to above as well.
+
+If you are able to SSH in at this point you have correctly created another user and setup their SSH key correctly.
+
+As the final step, you may remove the `jack` user from the device.
+    sudo userdel -r jack
+
+3.9 OPTIONALLY disable password authentication and only allow pubkey authentication.  This is recommended for most users but is considered optional because it is more advanced.
+
+Bring up `/etc/ssh/sshd_config` in your favorite editor and uncomment the line that has `PasswordAuthentication`.  Change the value to `no` if it is not set as such.  
+
+Once completed, run:
+    sudo service ssh restart
+
+3.10 OPTIONALLY update your packages.
 
 ## 4. Setup DC2 as a Docker Machine
 
@@ -108,25 +163,25 @@ NOTE: Everwhere you see `dc2` below, change that to the new hostname you have gi
 
 4.2 Find the IP address of your DC2
 
-`ping dc2.local`
+    ping dc2.local
 
 Substitute `a.b.c.d` in the following commands with your DC2's IP address
 
 4.3 Check that you can use SSH against your IP address
 
-`ssh dc2@a.b.c.d`
+    ssh dc2@a.b.c.d
 
 If you had previously used SSH against that IP address, your will likely get an error and you will need to update your known_hosts file.
 
 4.4 Setup the DC2 as a generic machine
 
-`docker-machine create --driver generic --generic-ssh-user=jack --generic-ip-address=a.b.c.d dc2`
+    docker-machine create --driver generic --generic-ssh-user=jack --generic-ip-address=a.b.c.d dc2
 
 This command takes a while as it will be updating the DC2. It will create add your DC2 as a machine to run containers in. Sometimes docker-machine emits an error about certs
 
 4.4 Check the status of your DC2 docker machine
 
-`docker-machine status dc2`
+    docker-machine status dc2
 
 4.5 Setup the DC2 as your docker machine
 
@@ -134,14 +189,14 @@ This command takes a while as it will be updating the DC2. It will create add yo
 
 4.5 Run the hello-world container
 
-`docker run hello-world`
+    docker run hello-world
 
 You should see "Hello from Docker". You now have a functining Desktop Computer Container!
 
 4.6 Shutting down your DC2. Make sure you properly shutdown your DC2 so that the file system does not get corrupted. If it does, you will need to connect a monitor and keyboard to fix the errors on boot.
 
-`ssh jack@dc2.local`
-`sudo shutdown -h now`
+    ssh jack@dc2.local
+    sudo shutdown -h now
 
 **put assembly down here!**
 
@@ -205,7 +260,26 @@ A: It is a spare battery. Your MinnowBoard Turbot should have a CR1225 battery i
 
 6.3 Q: I see `WRITE SAME failed. Manually zeroing.` on boot. What is happening?
 
-A: Nothing bad.
+A: You don't need to worry about this and can ignore it.  If you would like to make this message go away since it is unrelated to this hardware (it has to do with SCSI driver which is irrelevant for us), you can!  Copy the following script to `/usr/local/sbin/disable-write-same`:
+    #! /bin/sh
+    # Disable SCSI WRITE_SAME, which is not supported by underlying disk
+    # emulation.  Run on boot from, eg, /etc/rc.local
+    #
+    # See http://www.it3.be/2013/10/16/write-same-failed/
+    #
+    # Written by Ewen McNeill <ewen@naos.co.nz>, 2014-07-17
+    #---------------------------------------------------------------------------
+
+    find /sys/devices -name max_write_same_blocks |
+        while read DISK; do
+            echo 0 >"${DISK}"
+        done
+
+And then add a call on boot to this script before the `exit` in `/etc/rc.local`.
+
+On reboot you should no longer see this message.
+
+Source [link](http://ewen.mcneill.gen.nz/blog/entry/2014-07-17-mininet-on-ubuntu-14.04-in-kvm/).
 
 6.4 Q: The machine did not boot. What happened?
 

@@ -43,7 +43,7 @@ When you connect your DC2 to your network, it will be using DHCP to get an IP ad
 
 2.3. Check you can connect to your DC2
 
-Open up [](http://DC2.local:8765) with your browser -- this should return the configuration information from your DC2.
+Open up [http://DC2.local:8765](http://DC2.local:8765) with your browser -- this should return the configuration information from your DC2.
 It can take 40 seconds for the DC2 to boot, and 30 seconds for the dc2-node script to run and Bonjour to have completed its broadcast so that loading the web page to work. You should see something like this:
 
     {
@@ -94,7 +94,7 @@ You should now be able to `ssh jack@dc2.local` and not be prompted for a passwor
 
     sudo dpkg-reconfigure tzdata
 
-3.6 If you want to change the locale, follow directions at [](https://help.ubuntu.com/community/Locale).
+3.6 If you want to change the locale, follow directions at [https://help.ubuntu.com/community/Locale](https://help.ubuntu.com/community/Locale).
 
 3.7 If you have more than one DC2, change your hostname by replacing `dc2` to a new hostname unique on your network (eg. dc2a, dc2b, dc2c) in the `/etc/hostname` and `/etc/hosts` files.
 

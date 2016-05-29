@@ -111,13 +111,13 @@ Then restart `hostname` and `avahi` services with:
 
 NOTE: Everwhere you see `dc2` below, change that to the new hostname you have given your DC2.
 
-3.8 OPTIONALLY change the username from `jack` to something else.  This requires a few more commands and should be considered a bit more advnaced of a topic.
+3.8 OPTIONALLY change the username from `jack` to something else. This requires a few more commands and should be considered a bit more advnaced of a topic.
 
-In our example we will change the username to `bob` and remove `jack` entirely.  For this example, start my being logged in as `jack`.
+In our example we will change the username to `bob` and remove `jack` entirely. For this example, start my being logged in as `jack`.
 
 Create the new user:
 
-    sudo useradd -D bob
+    sudo useradd -m bob
 
 Set a `sudo` password for the user:
 
@@ -125,9 +125,9 @@ Set a `sudo` password for the user:
 
 Create the `ssh` directory for the user:
 
-	sudo mkdir /home/bob/.ssh
-	sudo chown bob:bob /home/bob/.ssh
-	sudo chmod 700 /home/bob/.ssh
+    sudo mkdir /home/bob/.ssh
+    sudo chown bob:bob /home/bob/.ssh
+    sudo chmod 700 /home/bob/.ssh
 
 If you created and copied over a ssh key for jack, let's copy it over to bob.
 
@@ -157,9 +157,9 @@ As the final step, you may remove the `jack` user from the device.
 
     sudo userdel -r jack
 
-3.9 OPTIONALLY disable password authentication and only allow pubkey authentication.  This is recommended for most users but is considered optional because it is more advanced.
+3.9 OPTIONALLY disable password authentication and only allow pubkey authentication. This is recommended for most users but is considered optional because it is more advanced.
 
-Bring up `/etc/ssh/sshd_config` in your favorite editor and uncomment the line that has `PasswordAuthentication`.  Change the value to `no` if it is not set as such.  
+Bring up `/etc/ssh/sshd_config` in your favorite editor and uncomment the line that has `PasswordAuthentication`. Change the value to `no` if it is not set as such.
 
 Once completed, run:
 
@@ -179,44 +179,119 @@ You may need to enter `y` to approve the updates.
 
 4.1 Make sure you have the [Docker Toolbox](https://www.docker.com/products/docker-toolbox) intalled on your computer.
 
-4.2 Find the IP address of your DC2
+4.2 Find the IP address of your DC2:
 
     ping dc2.local
 
 Substitute `a.b.c.d` in the following commands with your DC2's IP address
 
-4.3 Check that you can use SSH against your IP address
+4.3 Check that you can use SSH against your IP address:
 
     ssh dc2@a.b.c.d
 
-If you had previously used SSH against that IP address, your will likely get an error and you will need to update your known_hosts file.
+If you had previously used SSH against that IP address, your will likely get an error and you will need to update your `known_hosts` file.
 
-4.4 Setup the DC2 as a generic machine
+4.4 Add your SSH key to your agent.
+
+    ssh-add ~/.ssh/id_rsa
+
+You will be prompted for your SSH key passphrase. You may need to change `~/.ssh/id_rsa` to the path of your key that you created.
+
+4.5 OPTIONALLY create a separate user to run `docker`. This is a security measure.
+
+On the DC2, create a user and password for the user:
+
+    sudo useradd -m dockeradmin
+    sudo passwd dockeradmin
+    sudo mkdir /home/dockeradmin/.ssh
+    sudo chown dockeradmin:dockeradmin /home/dockeradmin/.ssh
+    sudo chmod 700 /home/dockeradmin/.ssh
+
+Back on your machine, create a SSH key and copy it to the DC2. Make sure *not* to enter a passphrase for this user, unlike your SSH key pair which most certainly should have a passphrase.
+
+    ssh-keygen -b 4096 -f ~/.ssh/id_rsa.dc2.docker
+
+With your favorite editor, create `/home/dockeradmin/.ssh/authrorized_keys` to contain the public half of the keypair (`~/.ssh/id_rsa.dc2.docker.pub`). And make sure to set the proper permissions:
+
+    sudo chown dockeradmin:dockeradmin /home/dockeradmin/.ssh/authorized_keys
+    sudo chmod 600 /home/dockeradmin/.ssh/authorized_keys
+
+Give the ability to this user full `sudo` access:
+
+    sudo visudo
+
+Copy/paste the following towards the bottom after the `%sudo` definition:
+
+    # Docker
+    dockeradmin     ALL=(ALL) NOPASSWD: ALL
+
+If everything was done perfectly, you should now be able to SSH as this user to the DC2.
+
+    ssh -o IdentityFile=~/.ssh/id_rsa.dc2.docker dockeradmin@a.b.c.d
+
+4.6 Setup the DC2 as a generic machine:
 
     docker-machine create --driver generic --generic-ssh-user=jack --generic-ip-address=a.b.c.d dc2
 
-This command takes a while as it will be updating the DC2. It will create add your DC2 as a machine to run containers in. Sometimes docker-machine emits an error about certs
+You may need to change the username if you created a separate one above. This command takes a while as it will be updating the DC2. It will create add your DC2 as a machine to run containers in. Sometimes `docker-machine` emits an error about certs.
 
-4.4 Check the status of your DC2 docker machine
+An example successful command and output might look like the following (with a couple more options):
+
+    docker-machine create --driver generic --generic-ssh-user dockeradmin --generic-ssh-key ~/.ssh/id_rsa.dc2.docker --generic-ip-address 10.1.12.2 --generic-ssh-port 22 dc2
+
+    Running pre-create checks...
+    Creating machine...
+    (dc2) Importing SSH key...
+    Waiting for machine to be running, this may take a few minutes...
+    Detecting operating system of created instance...
+    Waiting for SSH to be available...
+    Detecting the provisioner...
+    Provisioning with ubuntu(upstart)...
+    Installing Docker...
+    Copying certs to the local machine directory...
+    Copying certs to the remote machine...
+    Setting Docker configuration on the remote daemon...
+    Checking connection to Docker...
+    Docker is up and running!
+    To see how to connect your Docker Client to the Docker Engine running on this virtual machine, run: docker-machine env dc2
+
+4.7 Check the status of your DC2 docker machine:
 
     docker-machine status dc2
 
-4.5 Setup the DC2 as your docker machine
+It should state `Running` at this point.
 
-`docker-machine env dc2` will show you how to setup the envirnment to run commands against your DC2
+4.8 Setup the DC2 as your docker machine:
 
-4.5 Run the hello-world container
+To view the environment for your docker machine:
+
+    docker-machine env dc2
+
+It should output several lines.
+
+For assistance with this or any `docker` command you can always run `docker-machine help <command>`.
+
+Where command can be `env` or any other `docker-machine` command.
+
+4.9 Run the hello-world container:
+
+First, you need to setup your local environment by running the above `env` command. The output of that command at the end should have something like:
+
+    # Run this command to configure your shell:
+    # eval $(docker-machine env dc2)
+
+Run the `eval ...` command.
+
+After that, run:
 
     docker run hello-world
 
-You should see "Hello from Docker". You now have a functining Desktop Computer Container!
+You should see "Hello from Docker" along with various other output. You now have a functining Desktop Computer Container!
 
-4.6 Shutting down your DC2. Make sure you properly shutdown your DC2 so that the file system does not get corrupted. If it does, you will need to connect a monitor and keyboard to fix the errors on boot.
+4.10 Shutting down your DC2. Make sure you properly shutdown your DC2 so that the file system does not get corrupted. If it does, you will need to connect a monitor and keyboard to fix the errors on boot.
 
     ssh jack@dc2.local
     sudo shutdown -h now
-
-**put assembly down here!**
 
 Success! Disconnect power, ethernet and HDMI (if connected) and finish assembly.
 
@@ -278,7 +353,8 @@ A: It is a spare battery. Your MinnowBoard Turbot should have a CR1225 battery i
 
 6.3 Q: I see `WRITE SAME failed. Manually zeroing.` on boot. What is happening?
 
-A: You don't need to worry about this and can ignore it.  If you would like to make this message go away since it is unrelated to this hardware (it has to do with SCSI driver which is irrelevant for us), you can!  Copy the following script to `/usr/local/sbin/disable-write-same`:
+A: You don't need to worry about this and can ignore it. If you would like to make this message go away since it is unrelated to this hardware (it has to do with SCSI driver which is irrelevant for us), you can! Copy the following script to `/usr/local/sbin/disable-write-same`:
+
     #! /bin/sh
     # Disable SCSI WRITE_SAME, which is not supported by underlying disk
     # emulation.  Run on boot from, eg, /etc/rc.local
